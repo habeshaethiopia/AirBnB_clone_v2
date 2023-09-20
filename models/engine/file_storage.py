@@ -24,7 +24,8 @@ class FileStorage:
     def all(self, cls=None):
         """Return a dictionary of instantiated objects in __objects.
 
-        If a cls is specified, returns a dictionary of objects of that type.
+        If a cls is specified,
+        returns a dictionary of objects of that type.
         Otherwise, returns the __objects dictionary.
         """
         if cls is not None:
@@ -60,10 +61,11 @@ class FileStorage:
 
     def delete(self, obj=None):
         """Delete a given object from __objects, if it exists."""
-        try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
+        if obj is not None:
+            try:
+                del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+            except (AttributeError, KeyError):
+                pass
 
     def close(self):
         """Call the reload method."""
