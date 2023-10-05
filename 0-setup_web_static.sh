@@ -6,7 +6,13 @@ apt-get install -y nginx
 
 mkdir -p /data/web_static/releases/test/
 mkdir -p /data/web_static/shared/
-echo "Holberton School" > /data/web_static/releases/test/index.html
+echo "<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown -R ubuntu /data/
@@ -25,7 +31,7 @@ printf %s "server {
     }
 
     location /redirect_me {
-        return 301 http://codenerd.tech/;
+        return 301 http://habeshatech.tech/;
     }
 
     error_page 404 /404.html;
@@ -35,4 +41,4 @@ printf %s "server {
     }
 }" > /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
