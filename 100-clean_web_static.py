@@ -114,3 +114,14 @@ def deploy():
     if archive_path is None:
         return False
     return do_deploy(archive_path)
+def do_clean(number=0):
+    """Deletes out-of-date archives."""
+    number = int(number)
+    if number == 0 or number == 1:
+        number = 2
+    else:
+        number += 1
+    local("cd versions; ls -t | tail -n +{} | xargs rm -rf --".format(number))
+    run("cd /data/web_static/releases; ls -t | tail -n +{} | xargs rm -rf --"
+        .format(number))
+    
