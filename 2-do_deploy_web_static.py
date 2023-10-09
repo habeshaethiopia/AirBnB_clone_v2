@@ -49,7 +49,7 @@ def do_deploy(archive_path):
     # Move folder from web_static to its parent folder,to expose the index
     # files outsite the /we_static path
     if run("mv /data/web_static/releases/{}/web_static/* "
-           "/data/web_static/releases/{}/".
+            "/data/web_static/releases/{}/".
            format(folder, folder)).failed is True:
         print("Moving content to archive folder before deletion failed")
         return False
