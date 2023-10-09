@@ -7,7 +7,7 @@ from fabric.api import put
 from fabric.api import run
 
 env.user = "ubuntu"
-env.hosts = ['100.26.56.245', '54.144.149.135']
+env.hosts = ['35.174.204.151', '54.89.179.146']
 
 
 def do_deploy(archive_path):
@@ -18,7 +18,6 @@ def do_deploy(archive_path):
         return False
     fullFile = archive_path.split("/")[-1]
     folder = fullFile.split(".")[0]
-
     # Uploads archive to /tmp/ directory
     if put(archive_path, "/tmp/{}".format(fullFile)).failed is True:
         print("Uploading archive to /tmp/ failed")
