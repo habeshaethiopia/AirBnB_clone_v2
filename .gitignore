@@ -1,2 +1,4 @@
 *.cpython
 *.tgzgit
+__pycache__
+*.pyc
