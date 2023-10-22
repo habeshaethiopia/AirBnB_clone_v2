@@ -10,7 +10,9 @@ app = Flask(__name__)
 def cities_by_states():
     """Displays an HTML page with a list of all State objects in DBStorage."""
     states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
+
     return render_template("8-cities_by_states.html", states=states)
+
 
 @app.teardown_appcontext
 def teardown_db(self):
