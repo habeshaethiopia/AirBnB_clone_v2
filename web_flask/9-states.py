@@ -8,10 +8,11 @@ app = Flask(__name__)
 
 @app.route("/states", strict_slashes=False)
 @app.route("/states/<id>", strict_slashes=False)
-def states(id = None):
+def states(id=None):
     """Displays an HTML page with a list of all State objects in DBStorage."""
     states = storage.all("State").values()
-    return render_template("8-cities_by_states.html", states=states ,id = id)
+    return render_template("8-cities_by_states.html", states=states, id=id)
+
 
 @app.teardown_appcontext
 def teardown_db(self):
