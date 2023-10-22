@@ -2,6 +2,9 @@
 """the flask app"""
 from flask import Flask, render_template, url_for
 from models import storage
+from models.amenity import Amenity
+from models.state import State
+
 
 app = Flask(__name__)
 
@@ -22,8 +25,8 @@ def teardown_db(self):
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
     """Displays an HTML page with a list of all State objects in DBStorage."""
-    states = storage.all("State").values()
-    amenities = storage.all("Amenity").values()
+    states = storage.all(State).values()
+    amenities = storage.all(Amenity).values()
     return render_template("10-hbnb_filters.html", states=states, amenities=amenities)
 
 
