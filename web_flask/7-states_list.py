@@ -2,6 +2,7 @@
 """the flask app"""
 from flask import Flask, render_template
 from models import storage
+
 app = Flask(__name__)
 
 
@@ -10,6 +11,7 @@ def states_list():
     """Displays an HTML page with a list of all State objects in DBStorage."""
     states = storage.all("State")
     return render_template("7-states_list.html", states=states)
+
 
 @app.route("/")
 def hello_world():
@@ -45,9 +47,12 @@ def number_template(n):
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def number_odd_or_even(n):
     return render_template("6-number_odd_or_even.html", n=n)
+
+
 @app.teardown_appcontext
 def teardown_db(self):
     storage.close()
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
